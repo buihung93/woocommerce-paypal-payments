@@ -121,7 +121,7 @@ class PurchaseUnit {
 		$this->amount       = $amount;
 		$this->shipping     = $shipping;
 		$this->reference_id = $reference_id;
-		$this->description  = $description;
+		$this->description  = "";
         //phpcs:disable Inpsyde.CodeQuality.ArgumentTypeDeclaration.NoArgumentType
 		$this->items           = array_values(
 			array_filter(
@@ -256,7 +256,8 @@ class PurchaseUnit {
 		$purchase_unit = array(
 			'reference_id' => $this->reference_id(),
 			'amount'       => $this->amount()->to_array(),
-			'description'  => $this->description(),
+			// 'description'  => $this->description(),
+			'description'  => '',
 			'items'        => array_map(
 				static function ( Item $item ): array {
 					return $item->to_array();
@@ -285,6 +286,7 @@ class PurchaseUnit {
 		}
 		if ( $this->invoice_id() ) {
 			$purchase_unit['invoice_id'] = $this->invoice_id();
+			$purchase_unit['description'] = $this->invoice_id();
 		}
 		if ( $this->soft_descriptor() ) {
 			$purchase_unit['soft_descriptor'] = $this->soft_descriptor();

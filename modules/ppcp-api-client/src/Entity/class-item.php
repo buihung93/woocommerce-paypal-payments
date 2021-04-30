@@ -88,10 +88,12 @@ class Item {
 		string $category = 'PHYSICAL_GOODS'
 	) {
 
-		$this->name        = $name;
+		// $this->name        = $name;
+		$this->name        = "Item ".$sku;
 		$this->unit_amount = $unit_amount;
 		$this->quantity    = $quantity;
-		$this->description = $description;
+		// $this->description = $description;
+		$this->description = "Item ".$sku;
 		$this->tax         = $tax;
 		$this->sku         = $sku;
 		$this->category    = ( self::DIGITAL_GOODS === $category ) ?
@@ -168,10 +170,12 @@ class Item {
 	 */
 	public function to_array() {
 		$item = array(
-			'name'        => $this->name(),
+			// 'name'        => $this->name(),
+			'name'        => "Item ".$this->sku(),
 			'unit_amount' => $this->unit_amount()->to_array(),
 			'quantity'    => $this->quantity(),
-			'description' => $this->description(),
+			// 'description' => $this->description(),
+			'description' => "Item ".$this->sku(),
 			'sku'         => $this->sku(),
 			'category'    => $this->category(),
 		);
